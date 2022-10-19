@@ -1,0 +1,52 @@
+﻿@model List<MVC_SIS_Models.State>
+
+@{
+    ViewBag.Title = "States";
+}
+
+<h2>States</h2>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>State</th>
+                            <th>State Abbr.</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var state in Model)
+                        {
+                        <tr>
+                            <td>@state.StateName</td>
+                            <td>@state.StateAbbreviation</td>
+                            <td>
+                                @Html.ActionLink("Edit", "EditState", "Admin", new { abbr = state.StateAbbreviation }, null) |
+                                @Html.ActionLink("Delete", "DeleteState", "Admin", new { abbr = state.StateAbbreviation }, null)
+                            </td>
+
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="row">
+            <div class="col-xs-12">
+                <p>
+                    Here is the link to the @Html.ActionLink("Add State View", "AddState", "Admin")
+                </p>
+            </div>
+        </div>
+            </div>
+        </div>
+    </div>
+</body>
+

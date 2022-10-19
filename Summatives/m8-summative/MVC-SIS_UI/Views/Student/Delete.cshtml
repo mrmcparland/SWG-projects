@@ -1,0 +1,17 @@
+﻿@model MVC_SIS_UI.Models.StudentDeleteVM
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Confirm deletion of records: @Model.currentStudent.LastName, @Model.currentStudent.FirstName?</h3>
+@using (Html.BeginForm())
+{
+   
+    @Html.HiddenFor(m => m.currentStudent.StudentId)
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        @Html.ActionLink("Cancel", "List","Student", null, new { @class = "btn btn-sm btn info" })
+    </div>
+}

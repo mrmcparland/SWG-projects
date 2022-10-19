@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vending Machine</title>
+        <link href="css/home.css" rel="stylesheet">
+    </head>
+
+    <body>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 style="text-align: center">Vending Machine</h1>
+            <hr/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-9">
+            <div class="row" id="itemBoxes">
+                <div class="col-4" id="itemTemplate">
+                    Items not yet loaded...
+                </div>
+            </div>
+    </div>
+        <div class="col-3">
+            <div class="row" id="moneyIn">
+                <div class="col text-center">
+                    <div class="h3">Deposited Amt:</div>
+                    <div class="h3 bg-light border-dark">$<span id="money">0.00</span></div>
+                    <div class="border-dark row">
+                        <button class="btn btn-primary col-5" onclick="addMoney(100)">$1.00</button>
+			&nbsp;
+                        <button class="btn btn-primary col-6" onclick="addMoney(25)">$.25</button>
+			&nbsp;
+                        <button class="btn btn-primary col-5" onclick="addMoney(10)">$.10</button>
+			&nbsp;
+                        <button class="btn btn-primary col-6" background-color: #343a40 onclick="addMoney(5)">$.05</button>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row" id="messages">
+                <div class="col text-center">
+                    <div class="h3">Message</div>
+                    <textarea class="h6 bg-light border-dark" id="messageBox" rows="4" readonly></textarea>
+                    <div class="row">
+                        <div class="col-6 text-right">
+                            <label for="itemId" class="h4">Item: </label>
+                        </div>
+                        <div class="col-6 text-left">
+                            <textarea class="h4 bg-light border-dark" rows="1" cols="2" id="itemId" readonly></textarea>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="makePurchase()">Make purchase</button>
+                </div>
+            </div>
+            <hr/>
+            <div class="row" id="change">
+                <div class="col text-center">
+                    <div class="h3">Change</div>
+                    <textarea class="h6 bg-light border-dark" id="changeBox" rows="4" readonly></textarea>
+                    <button class="btn btn-primary" onclick="takeChange()">Change Return</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="number" hidden value="0" id="goAwayFloatingPoint">
+
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+            <script src="js/home.js"></script>
+    </body>
+</html>

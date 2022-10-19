@@ -1,0 +1,65 @@
+﻿@model GuildCars.UI2.Models.MakeViewModel
+
+
+<h2>AddMake</h2>
+
+<div class="col-xs-12">
+    @using (Html.BeginForm("AddMake", "Admin", FormMethod.Post, new { enctype = "multipart/formdata", id = "addMake" }))
+    {
+        @Html.ValidationSummary()
+        <table class="col-md-6">
+            <tr>
+                <td>
+                    <label>New Make:</label>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.vehicleMake.Make, new { @class = "form-control" })
+                </td>
+                <td>
+                    <button class="btn btn-primary">Save</button>
+                </td>
+            </tr>
+        </table>        
+    }
+</div>
+<div class="col-xs-12">
+    <div class="col-xs-12 col-sm-12 col-md-8">
+        <table class="table table-striped"  align="left" id="makeTbl">
+            <tr>
+                <th>
+                    Make
+                </th>
+                <th>
+                    Date Added
+                </th>
+                <th>
+                    User
+                </th>
+            </tr>
+            <tbody>
+                @foreach (var make in Model.MakeList)
+                {
+                <tr>
+                    <td>
+                            @make.Make
+                            
+                    </td>
+
+                  
+                      <td>
+                          @make.DateAdded.ToShortDateString()
+                      </td>
+                 
+                      <td>
+                          @make.UserName
+                      </td>
+                  </tr>
+                }
+                
+            </tbody>
+        </table>
+    </div>
+ </div>
+       
+   
+

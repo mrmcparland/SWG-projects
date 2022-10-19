@@ -1,0 +1,151 @@
+﻿body {
+    padding: 0;
+    margin: 0;
+}
+    /* Set padding to keep content from hitting the edges */
+.body-content {
+    
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+   
+}
+
+.isFeatured {
+    width: 100px !important;
+    height: 100px !important;
+    
+}
+
+.usedImg {
+    width: 200px !important;
+    height: 200px !important;
+}
+.newImg {
+    width: 200px !important;
+    height: 200px !important;
+}
+#addMakeDiv {
+    
+    float: left;
+}
+#makeTbl {
+    display:table-header-group;
+    
+}
+#featuredVehicles {
+    width: 250px !important;
+    height: 200px !important;
+    border: 1px solid black;
+}
+
+#usedInvSearch {
+    border: 1px solid black;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+}
+#newInvSearch {
+    border: 1px solid black;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+}
+#specialHomePg {
+    border: 1px solid black;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+}
+
+
+#adminInvSearch {
+    border: 1px solid black;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+}
+#searchComponentsUsed {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+}
+#searchComponentsNew {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+}
+#searchUsedBtn {
+    display: block;
+    width: 20%;
+    border: none;
+    background-color: #04AA6D;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+#searchNewBtn {
+    display: block;
+    width: 20%;
+    border: none;
+    background-color: #04AA6D;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+#usedSearchResults {
+    border: 1px solid black;
+    justify-content: center;
+}
+#newSearchResults {
+    border: 1px solid black;
+    justify-content: center;
+}
+#adminSearchResults {
+    border: 1px solid black;
+    justify-content: center;
+}
+#searchDetails {
+    border: 1px solid black;
+    justify-content: center;
+}
+table#usedVehicles {
+    border-collapse: separate;
+    border-spacing: 20px 20px;
+}
+table#newVehicles {
+    border-collapse: separate;
+    border-spacing: 20px 20px;
+}
+table#adminVehicles {
+    border-collapse: separate;
+    border-spacing: 20px 20px;
+}
+#specialDiv {
+    border: 1px solid black;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+}
+#googleMapContactsPg {
+    grid-column-start: 5
+}

@@ -1,0 +1,69 @@
+﻿@model GuildCars.UI2.Models.ModelViewModel
+
+
+<h2>AddModel</h2>
+
+    <div class="col-xs-12">
+        @using (Html.BeginForm("AddModel", "Admin", FormMethod.Post, new { enctype = "multipart/formdata", id = "addMake" }))
+        {
+            @Html.ValidationSummary()
+            <table class="col-md-6">
+                <tr>
+                    <td>
+                        <label>New Model:</label>
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.vehicleModel.Model, new { @class = "form-control" })
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => m.vehicleModel.Make, Model.Make, new { @class = "form-control" })
+                    </td>
+                    <td>
+                        <button class="btn btn-primary">Save</button>
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+
+    <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-12 col-md-8">
+            <table class="table table-striped" align="left" id="makeTbl">
+                <tr>
+                    <th>
+                        Make
+                    </th>
+                    <th>
+                        Model
+                    </th>
+                    <th>
+                        Date Added
+                    </th>
+                    <th>
+                        User
+                    </th>
+                </tr>
+                <tbody>
+                    @foreach(var test in Model.ModelList)
+                    {
+                        <tr>
+                            <td>
+                                @test.Make
+                            </td>
+                            <td>
+                                @test.Model
+                            </td>
+                            <td>
+                                @test.DateAdded.ToShortDateString()
+                            </td>
+                            <td>
+                                @test.UserName
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+

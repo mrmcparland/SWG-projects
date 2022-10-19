@@ -1,0 +1,27 @@
+﻿@model MVC_SIS_UI.Models.AddEditCourseVM
+
+@{
+    ViewBag.Title = "EditCourse";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Edit Major</h3>
+        @Html.ActionLink("Return to List", "Courses", "Admin")
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(m => m.course.CourseId)
+            @Html.ValidationSummary()
+            <div class="form-group">
+                <label>Major</label>
+                @Html.TextBoxFor(m => m.course.CourseName, new { @class = "form-control", placeholder = "Course" })
+            </div>
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+        }
+    </div>
+</div>
+

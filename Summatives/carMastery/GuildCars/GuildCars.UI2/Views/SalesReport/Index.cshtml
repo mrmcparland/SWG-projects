@@ -1,0 +1,120 @@
+﻿@model IEnumerable<GuildCars.Models.Tables.VehicleSales>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Sales Report</h2>
+
+<div class="col-lg-12" id="salesSearch">
+
+    <form>
+        <div>
+            Filters
+        </div>
+
+        <strong>User: </strong>
+
+        <select id="userName">
+            <option selected>-All-</option>
+
+            @foreach (var sales in Model)
+            {
+                <option>@sales.UserName</option>
+
+            }
+        </select>
+
+        <strong>From Date:</strong>
+        <input type="datetime" 
+               id="minDate"/>
+        &nbsp;
+        &nbsp;
+
+        <strong>To Date:</strong>
+        <input type="datetime" 
+               id="maxDate"/>
+
+
+    </form>
+
+    <div class="col-lg-12">
+        <button type="button"
+                id="searchSalesBtn"
+                class="btn btn-success"
+                onclick="search()">
+            Search
+        </button>
+    </div>
+
+</div>
+<div class="row col-xs-12" id="searchResults">
+
+
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#searchResults").submit(function (e) {
+                search();
+                return false;
+            });
+            //$("#searchDetails").hide();
+        });
+        function search() {
+            var params;
+
+            params = 'userName=' + $('#userName').val() + '&minDate=' + $('#minDate').val() + '&maxDate=' + $('#maxDate').val();
+
+            $.ajax({
+                type: 'GET',
+                url: 'https://localhost:44380/api/SalesReport/Index?' + params,
+                success: function (results) {
+                    $('#searchResults').empty();
+                    var html = '<div class="col-lg-12" id="usedSearchResults">' +
+                        ' <table class="table table-striped col-lg-6">' +
+                        '<thead>' +
+                        '<tr>' +
+                        '<th>' +
+                        'User' +
+                        '</th>' +
+                        '<th>' +
+                        'Total Sales' +
+                        '</th>' +
+                        '<th>' +
+                        'Total Vehicles' +
+                        '</th>' +
+                        '</tr>' +
+                        '</thead>' +
+                        '<tbody>';
+                    $.each(results, function (index, sales) {
+                        html +=
+                            '<tr>' +
+                            '<td>' +
+                            sales.UserName +
+                            '</td>' +
+                            '<td>' +
+                            sales.SalesPrice +
+                            '<td>' +
+                            sales.VehicleId +
+                            '</td>' +
+                            '</tr>'
+                    });
+                    html += '</tbody>' +
+                        '</table>';
+                    $('#searchResults').append(html.toString());
+                    //alert('Success!');
+                },
+                error: function () {
+                    alert('Error performing search, try again later');
+                }
+            })
+        }
+
+
+    </script>
+    
+    }
+

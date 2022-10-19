@@ -1,0 +1,27 @@
+﻿@model IEnumerable<GuildCars.Models.Tables.Specials>
+
+
+
+
+
+
+<h2>
+    Specials
+</h2>
+
+
+    @foreach (var special in Model)
+
+    {
+    <div class="col-xs-12" id="specialDiv">
+        <p>
+            @special.SpecialTitle
+        </p>
+        <p>
+            @special.SpecialDescription
+        </p>
+    </div>
+            }
+        
+    
+

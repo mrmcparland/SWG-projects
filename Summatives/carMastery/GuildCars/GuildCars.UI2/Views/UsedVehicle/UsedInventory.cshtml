@@ -1,0 +1,389 @@
+﻿@model IEnumerable<GuildCars.Models.Tables.Vehicles>
+
+
+
+
+    @{
+        ViewBag.Title = "UsedInventory";
+    }
+
+    <h2>UsedInventory</h2>
+
+
+
+    <div class="col-lg-12" id="usedInvSearch">
+        Quick Search
+
+        <form>
+            <input type="text"
+                   name="txtBox"
+                   placeholder="Enter make, model, or year"
+                   id="yearMakeModelBox">
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <strong>Price:</strong>
+
+            <select name="Price min" id="priceMin">
+                <option selected disabled>No Min</option>
+                <option value="1000">$1000</option>
+                <option value="2000">$2000</option>
+                <option value="3000">$3000</option>
+                <option value="4000">$4000</option>
+                
+                <option value="5000">$5000</option>
+                <option value="6000">$6000</option>
+                <option value="7000">$7000</option>
+                <option value="8000">$8000</option>
+                <option value="9000">$9000</option>
+                <option value="10000">$10000</option>
+                <option value="11000">$11000</option>
+                <option value="12000">$12000</option>
+                <option value="13000">$13000</option>
+                <option value="14000">$14000</option>
+                <option value="15000">$15000</option>
+                <option value="16000">$16000</option>
+                <option value="17000">$17000</option>
+                <option value="18000">$18000</option>
+                <option value="19000">$19000</option>
+                <option value="20000">$20000</option>
+
+            </select>
+            &nbsp;
+            &nbsp;
+            <select name="Price max" id="priceMax">
+                <option selected disabled>No Max</option>
+                <option value="1000">$1000</option>
+                <option value="2000">$2000</option>
+                <option value="3000">$3000</option>
+                <option value="4000">$4000</option>
+                <option value="4000">$4000</option>
+                <option value="5000">$5000</option>
+                <option value="6000">$6000</option>
+                <option value="7000">$7000</option>
+                <option value="8000">$8000</option>
+                <option value="9000">$9000</option>
+                <option value="10000">$10000</option>
+                <option value="11000">$11000</option>
+                <option value="12000">$12000</option>
+                <option value="13000">$13000</option>
+                <option value="14000">$14000</option>
+                <option value="15000">$15000</option>
+                <option value="16000">$16000</option>
+                <option value="17000">$17000</option>
+                <option value="18000">$18000</option>
+                <option value="19000">$19000</option>
+                <option value="20000">$20000</option>
+
+            </select>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <strong>Year:</strong>
+            &nbsp;
+            &nbsp;
+            <select name="Year min" id="yearMin">
+                <option selected disabled>No Min</option>
+                <option value="2000">2000</option>
+                <option value="2001">2001</option>
+                <option value="2002">2002</option>
+                <option value="2003">2003</option>
+                <option value="2004">2004</option>
+                <option value="2005">2005</option>
+                <option value="2006">2006</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+                <option value="2010">2010</option>
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+
+            </select>
+            &nbsp;
+            &nbsp;
+            <select name="Year max" id="yearMax">
+                <option selected disabled>No Max</option>
+                <option value="2000">2000</option>
+                <option value="2001">2001</option>
+                <option value="2002">2002</option>
+                <option value="2003">2003</option>
+                <option value="2004">2004</option>
+                <option value="2005">2005</option>
+                <option value="2006">2006</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+                <option value="2010">2010</option>
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+
+            </select>
+
+        </form>
+
+        <div class="col-lg-offset-3">
+            <button type="button"
+                    id="searchUsedBtn"
+                    class="btn btn-success"
+                    onclick="search()">
+                Search
+            </button>
+        </div>
+
+    </div>
+
+    <div class="row col-xs-12" id="searchResults">
+       
+        
+    </div>
+<div  class="row col-xs-12" id="searchDetails">
+    
+</div>
+
+    
+    
+
+   
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#searchResults").submit(function (e) {
+                search();
+                return false;
+            });
+            $("#searchDetails").hide();
+        });
+        function search() {
+            var params;
+            var imagePath = '@Url.Content("~/Images/")';
+
+            params = 'yearMakeModel=' + $('#yearMakeModelBox').val() + '&minPrice=' + $('#priceMin').val() + '&maxPrice=' + $('#priceMax').val() +
+                '&minYear=' + $('#yearMin').val() + '&maxYear=' + $('#yearMax').val();
+
+            $.ajax({
+                type: 'GET',
+                url: 'https://localhost:44380/api/UsedInventory/search?' + params,
+                success: function (results) {
+                    $('#searchResults').empty();
+
+                    $.each(results, function (usedInventory, vehicle) {
+                        var vehicleID = vehicle.vehicleID;
+                        var bodyStyle = vehicle.bodyStyle;
+                        var html = '<div class="col-lg-12" id="usedSearchResults">' +
+                                    '<div class="col-lg-3"> ' +
+                            '<p>' + vehicle.VehicleYear + " " + vehicle.Make + " " + vehicle.Model + '</p>'+
+                            '<p><img class="usedImg" img src=/Images/'  + vehicle.VehicleImage +' /<></p>'+
+                                      '</div>'+
+                                '<div class="col-lg-9">' +
+                '<table id="usedVehicles">' +
+                   '<tbody>'+
+                       '<tr>'+
+                            '<td>'+
+                                '<strong>Body Syle: </strong>' + vehicle.BodyStyle +
+                            '</td>' +
+                            '<td>'+
+                                '<strong>Interior: </strong>'+ vehicle.IntColor +
+                            '</td>'+
+                            '<td>' +
+                            '<strong>Sales Price: </strong>' + '$' + vehicle.SalesPrice + '</td>'  +
+                        '</tr>' +
+                        '<tr>'+
+                            '<td>'+
+                            '<strong>Trans: </strong> ' +  vehicle.IsManual +
+
+                                '</td>' +
+                                '<td>' +
+                                '<strong>Mileage: </strong>' + vehicle.Mileage +
+                                '</td>' +
+                                '<td>' +
+                            '<strong>MSRP: </strong>' + '$' + vehicle.MSRP +
+                                '</td>' +
+                                '</tr>' +
+                                '<tr>' +
+                                '<td>' +
+                                '<strong>Color: </strong>' + vehicle.ExtColor +
+                                '</td>' +
+                                '<td>' +
+                                '<strong>VIN #: </strong> ' + vehicle.VIN +
+                                '</td>' +
+                                '<td>' +
+                            '<button id="usedDetailsBtn" class="editbtn" onclick="hideResults('  + vehicle.VehicleID + ')">Details</button> ' +
+                                '</td>' +
+                                '</tr>' +
+                                '</tbody>' +
+                                '</table>' +
+                                '</div>' +
+                                '</div>'
+                        $('#searchResults').append(html.toString());
+
+                    });
+                },
+                error: function () {
+                    alert('Error performing search, try again later')
+                }
+            })
+        }
+
+        function hideResults(vehicleID) {
+
+
+            $.ajax({
+                type: 'GET',
+                url: 'https://localhost:44380/api/UsedInventory/UsedDetails/' + vehicleID,
+                success: function (result) {
+                    //alert('success');
+                    if (result.isSold == 'No') {
+                        $("#usedInvSearch").hide();
+                        $("#searchResults").hide();
+                        var html = '<div class="col-lg-12" id="usedCarSearchResults">' +
+                            '<div class="col-lg-3"> ' +
+                            '<p>' + result.VehicleYear + " " + result.Make + " " + result.Model + '</p>' +
+                            '<p><img class="usedImg" img src=/Images/' + result.VehicleImage + ' /<></p>' +
+                            '</div>' +
+                            '<div class="col-lg-9">' +
+                            '<table id="usedVehicles">' +
+                            '<tbody>' +
+                            '<tr>' +
+                            '<td>' +
+                            '<strong>Body Syle: </strong>' + result.BodyStyle +
+                            '</td>' +
+                            '<td>' +
+                            '<strong>Interior: </strong>' + result.IntColor +
+                            '</td>' +
+                            '<td>' +
+                            '<strong>Sales Price: </strong>' + '$' + result.SalesPrice + '</td>' +
+                            '</tr>' +
+                            '<tr>' +
+                            '<td>' +
+                            '<strong>Trans: </strong> ' + result.IsManual +
+
+                            '</td>' +
+                            '<td>' +
+                            '<strong>Mileage: </strong>' + result.Mileage +
+                            '</td>' +
+                            '<td>' +
+                            '<strong>MSRP: </strong>' + '$' + result.MSRP +
+                            '</td>' +
+                            '</tr>' +
+                            '<tr>' +
+                            '<td>' +
+                            '<strong>Color: </strong>' + result.ExtColor +
+                            '</td>' +
+                            '<td>' +
+                            '<strong>VIN #: </strong> ' + result.VIN +
+                            '</td>' +
+                            '<td>' +
+                            '<button id="contactBtn" class="editbtn" onclick="Contact(\'' + result.VIN + '\')">Contact Us</button > ' +
+                            '</td>' +
+
+                            '</tr>' +
+                            '</tbody>' +
+
+                            '</table>' +
+                            result.VehicleDescription +
+                            '</div>' +
+                            '</div>'
+
+                        $('#searchDetails').append(html.toString());
+                        $("#searchDetails").show();
+                    }
+                    else {
+                        $("#usedInvSearch").hide();
+                        $("#searchResults").hide();
+                        var html = '<div class="col-lg-12" id="usedCarSearchResults">' +
+                            '<div class="col-lg-3"> ' +
+                            '<p>' + result.VehicleYear + " " + result.Make + " " + result.Model + '</p>' +
+                            '<p><img class="usedImg" img src=/Images/' + result.VehicleImage + ' /<></p>' +
+                            '</div>' +
+                            '<div class="col-lg-9">' +
+                            '<table id="usedVehicles">' +
+                            '<tbody>' +
+                            '<tr>' +
+                            '<td>' +
+                            '<strong>Body Syle: </strong>' + result.BodyStyle +
+                            '</td>' +
+                            '<td>' +
+                            '<strong>Interior: </strong>' + result.IntColor +
+                            '</td>' +
+                            '<td>' +
+                            '<strong>Sales Price: </strong>' + '$' + result.SalesPrice + '</td>' +
+                            '</tr>' +
+                            '<tr>' +
+                            '<td>' +
+                            '<strong>Trans: </strong> ' + result.IsManual +
+
+                            '</td>' +
+                            '<td>' +
+                            '<strong>Mileage: </strong>' + result.Mileage +
+                            '</td>' +
+                            '<td>' +
+                            '<strong>MSRP: </strong>' + '$' + result.MSRP +
+                            '</td>' +
+                            '</tr>' +
+                            '<tr>' +
+                            '<td>' +
+                            '<strong>Color: </strong>' + result.ExtColor +
+                            '</td>' +
+                            '<td>' +
+                            '<strong>VIN #: </strong> ' + result.VIN +
+                            '</td>' +
+                            '<td>' +
+                            '<label>Purchased</label > ' +
+                            '</td>' +
+
+                            '</tr>' +
+                            '</tbody>' +
+
+                            '</table>' +
+                            result.VehicleDescription +
+                            '</div>' +
+                            '</div>'
+
+                        $('#searchDetails').append(html.toString());
+                        $("#searchDetails").show();
+                    }
+                },
+                error: function () {
+                    alert('Error performing search, try again later');
+                }
+            })
+
+
+
+        }
+        function Contact(vin) {
+            window.location.href = '/Contact/Index/' + vin;
+        }
+    </script>
+    }

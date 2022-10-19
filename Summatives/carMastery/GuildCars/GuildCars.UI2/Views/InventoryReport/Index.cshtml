@@ -1,0 +1,112 @@
+﻿@model IEnumerable<GuildCars.Models.Queries.StockValueVehicles>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Inventory Report</h2>
+<div class="col-lg-12">
+    <table class="table table-striped col-lg-6">
+        New Vehicles
+        <thead>
+            <tr>
+                <th>
+                    Year
+                </th>
+                <th>
+                    Make
+                </th>
+                <th>
+                    Model
+                </th>
+                <th>
+                    Count
+                </th>
+                <th>
+                    Stock Value
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var vehicle in Model)
+            {
+                if (vehicle.newOrUsed == "New")
+                {
+                    <tr>
+                        <td>
+                            @vehicle.vehicleYear
+
+                        </td>
+                        <td>
+                            @vehicle.vehicleMake
+                        </td>
+                        <td>
+                            @vehicle.vehicleModel
+                        </td>
+                        <td>
+                            @vehicle.countVehicleId
+                        </td>
+                        <td>
+                            @vehicle.sumMSRP.ToString("c")
+                        </td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+</div>
+<div class="col-lg-12">
+    <table class="table table-striped col-lg-6">
+        Used Vehicles
+        <thead>
+            <tr>
+                <th>
+                    Year
+                </th>
+                <th>
+                    Make
+                </th>
+                <th>
+                    Model
+                </th>
+                <th>
+                    Count
+                </th>
+                <th>
+                    Stock Value
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            @foreach(var vehicle in Model)
+            {
+                if(vehicle.newOrUsed == "Used")
+                {
+            <tr>
+                <td>
+                    @vehicle.vehicleYear
+
+                </td>
+                <td>
+                    @vehicle.vehicleMake
+                </td>
+                <td>
+                    @vehicle.vehicleModel
+                </td>
+                <td>
+                    @vehicle.countVehicleId
+                </td>
+                <td>
+                    @vehicle.sumMSRP.ToString("c")
+                </td>
+            </tr>
+                }
+                
+            }
+        </tbody>
+    </table>
+</div>
+
